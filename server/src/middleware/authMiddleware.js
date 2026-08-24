@@ -1,9 +1,5 @@
 const jwt = require('jsonwebtoken');
 
-/**
- * Protects routes by requiring a valid JWT in the Authorization header
- * (format: "Bearer <token>"). Attaches the decoded user id to req.userId.
- */
 function requireAuth(req, res, next) {
   const authHeader = req.headers.authorization || '';
   const token = authHeader.startsWith('Bearer ') ? authHeader.slice(7) : null;

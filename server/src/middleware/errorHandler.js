@@ -1,9 +1,6 @@
 const multer = require('multer');
 
-/**
- * Central error handler. Ensures no internal error details, stack traces,
- * or API keys ever leak to the client.
- */
+
 function errorHandler(err, req, res, next) {
   console.error('Error:', err.message);
 

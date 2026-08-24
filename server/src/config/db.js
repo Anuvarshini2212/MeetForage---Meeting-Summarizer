@@ -1,10 +1,4 @@
 const mongoose = require('mongoose');
-
-/**
- * Connects to MongoDB using the URI from environment variables.
- * The app is allowed to boot even if this fails initially so that
- * health checks can report the DB as unavailable rather than crashing.
- */
 async function connectDB() {
   const uri = process.env.MONGODB_URI;
 

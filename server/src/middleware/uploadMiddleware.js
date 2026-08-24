@@ -18,10 +18,10 @@ const ALLOWED_MIME_TYPES = [
   'audio/x-m4a',
   'audio/mp4',
   'audio/webm',
-  'video/mp4', // some browsers tag m4a/mp4 audio this way
+  'video/mp4', 
 ];
 
-const MAX_FILE_SIZE = 50 * 1024 * 1024; // 50MB
+const MAX_FILE_SIZE = 50 * 1024 * 1024; 
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => cb(null, UPLOAD_DIR),

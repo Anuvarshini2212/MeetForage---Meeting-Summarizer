@@ -1,8 +1,3 @@
-/**
- * Prompt engineering lives here, isolated from controller/service logic,
- * so it can be iterated on without touching application code.
- */
-
 const SYSTEM_PROMPT = `You are an expert meeting analyst.
 
 Analyze the provided meeting transcript accurately.

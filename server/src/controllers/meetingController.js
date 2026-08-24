@@ -4,11 +4,7 @@ const Meeting = require('../models/Meeting');
 const { transcribeAudio } = require('../services/transcriptionService');
 const { summarizeTranscript } = require('../services/summarizationService');
 
-/**
- * POST /api/meetings
- * Accepts an audio file, runs it through ASR + LLM, and saves the result
- * scoped to the authenticated user.
- */
+
 async function createMeeting(req, res, next) {
   let meeting;
   try {
@@ -75,7 +71,6 @@ async function createMeeting(req, res, next) {
   }
 }
 
-/** GET /api/meetings — only the current user's meetings */
 async function getMeetings(req, res, next) {
   try {
     const meetings = await Meeting.find({ user: req.userId })
@@ -88,7 +83,7 @@ async function getMeetings(req, res, next) {
   }
 }
 
-/** GET /api/meetings/:id — only if it belongs to the current user */
+
 async function getMeetingById(req, res, next) {
   try {
     if (!mongoose.Types.ObjectId.isValid(req.params.id)) {

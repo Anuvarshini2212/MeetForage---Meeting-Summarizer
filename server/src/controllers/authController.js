@@ -9,7 +9,7 @@ function sanitizeUser(user) {
   return { id: user._id, name: user.name, email: user.email };
 }
 
-/** POST /api/auth/signup */
+
 async function signup(req, res, next) {
   try {
     const { name, email, password } = req.body;
@@ -42,7 +42,6 @@ async function signup(req, res, next) {
   }
 }
 
-/** POST /api/auth/login */
 async function login(req, res, next) {
   try {
     const { email, password } = req.body;
@@ -73,7 +72,6 @@ async function login(req, res, next) {
   }
 }
 
-/** GET /api/auth/me */
 async function getMe(req, res, next) {
   try {
     const user = await User.findById(req.userId);
