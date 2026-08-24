@@ -55,10 +55,10 @@ React (Vite) → Express (Node.js) → MongoDB
 
 ## Screenshots
 
-_Add screenshots here after running the app locally, e.g.:_
-
 - <img width="1906" height="832" alt="image" src="https://github.com/user-attachments/assets/6bc05ca5-03c9-48b9-8e52-9854aeed2ee4" />
+
 - <img width="1862" height="857" alt="image" src="https://github.com/user-attachments/assets/83e470e0-a34e-46ab-8670-0e5f80fca67a" />
+
 - <img width="1886" height="857" alt="image" src="https://github.com/user-attachments/assets/350677d2-8403-4b6a-afd6-2f9cf8619fab" />
 
 
