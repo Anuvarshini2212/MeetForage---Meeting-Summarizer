@@ -1,0 +1,27 @@
+{
+  "name": "meeting-summarizer-server",
+  "version": "1.0.0",
+  "description": "Backend API for Meeting Summarizer",
+  "main": "src/server.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js"
+  },
+  "dependencies": {
+    "axios": "^1.7.4",
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "form-data": "^4.0.0",
+    "groq-sdk": "^0.34.0",
+    "jsonwebtoken": "^9.0.2",
+    "meeting-summarizer": "file:..",
+    "mongoose": "^8.5.0",
+    "multer": "^2.0.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.4"
+  }
+}
