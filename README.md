@@ -80,33 +80,6 @@ npm run install:all
 
 This installs dependencies for both `client/` and `server/`. (You can also `cd` into each folder and run `npm install` individually.)
 
-## Environment Variables
-
-Copy the example env files and fill in your own values — **never commit real `.env` files**.
-
-**server/.env** (copy from `server/.env.example`):
-
-```env
-OPENAI_API_KEY=your_openai_api_key_here
-MONGODB_URI=mongodb://127.0.0.1:27017/meeting-summarizer
-PORT=5000
-CLIENT_ORIGIN=http://localhost:5173
-JWT_SECRET=replace_this_with_a_long_random_string
-```
-
-Generate a strong `JWT_SECRET` with:
-```bash
-node -e "console.log(require('crypto').randomBytes(48).toString('hex'))"
-```
-
-**client/.env** (copy from `client/.env.example`):
-
-```env
-VITE_API_BASE_URL=http://localhost:5000/api
-```
-
-> Get an OpenAI API key at https://platform.openai.com/api-keys. Without a valid key, uploads will fail with a clear "ASR/LLM service unavailable" error rather than silently returning fake data.
-
 ## Running the Project
 
 Make sure MongoDB is running locally (or point `MONGODB_URI` at an Atlas cluster), then:
