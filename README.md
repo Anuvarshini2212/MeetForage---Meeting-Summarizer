@@ -1,10 +1,10 @@
-# Signal — Meeting Summarizer
+# MeetForage — Meeting Summarizer
 
 Turn a raw meeting recording into a clean transcript, an AI-generated summary, key discussion points, decisions, and a structured action-item list — automatically.
 
 ## Description
 
-Signal is a full-stack web application that takes a meeting audio file, transcribes it with a speech-to-text (ASR) model, and runs the transcript through an LLM to extract:
+MeetForage is a full-stack web application that takes a meeting audio file, transcribes it with a speech-to-text (ASR) model, and runs the transcript through an LLM to extract:
 
 - A concise overview and detailed summary
 - The most important discussion points
@@ -45,94 +45,6 @@ React (Vite) → Express (Node.js) → MongoDB
 **Backend:** Node.js, Express, MongoDB, Mongoose, Multer, JWT (jsonwebtoken), bcryptjs
 **AI:** OpenAI Whisper (transcription), OpenAI GPT (summarization) — called directly over HTTPS via axios rather than the `openai` SDK, to avoid Node's native `fetch`/`undici` connection issues seen on some Windows/antivirus setups
 
-## Project Structure
-
-```
-meeting-summarizer/
-├── client/                  # React frontend
-│   └── src/
-│       ├── components/      # Navbar, AudioDropzone, PipelineTracker, StatusBadge, etc.
-│       ├── pages/            # Dashboard, UploadMeeting, MeetingHistory, MeetingDetails
-│       ├── services/api.js   # All backend API calls
-│       └── utils/format.js   # File validation, date/size formatting
-│
-├── server/                  # Express backend
-│   └── src/
-│       ├── config/db.js               # MongoDB connection
-│       ├── controllers/               # Thin route handlers
-│       ├── models/Meeting.js          # Mongoose schema
-│       ├── routes/meetingRoutes.js    # REST endpoints
-│       ├── services/                  # ASR, LLM, and prompt logic
-│       ├── middleware/                # Multer upload + error handling
-│       └── server.js                  # App entry point
-│
-├── .gitignore
-└── README.md
-```
-
-## Installation
-
-```bash
-git clone <your-repo-url>
-cd meeting-summarizer
-npm run install:all
-```
-
-This installs dependencies for both `client/` and `server/`. (You can also `cd` into each folder and run `npm install` individually.)
-
-## Running the Project
-
-Make sure MongoDB is running locally (or point `MONGODB_URI` at an Atlas cluster), then:
-
-```bash
-# from the project root, runs both client and server together
-npm run install:all
-npm run dev
-```
-
-Or run them separately:
-
-```bash
-# Terminal 1
-cd server
-npm install
-npm run dev        # starts on http://localhost:5000
-
-# Terminal 2
-cd client
-npm install
-npm run dev         # starts on http://localhost:5173
-```
-
-Open http://localhost:5173 in your browser.
-
-## API Documentation
-
-Base URL: `http://localhost:5000/api`
-
-| Method | Endpoint            | Auth required | Description                                              |
-|--------|----------------------|:---:|------------------------------------------------------------|
-| POST   | `/auth/signup`       | No | Create an account. Body: `{ name, email, password }`. Returns a JWT + user. |
-| POST   | `/auth/login`        | No | Log in. Body: `{ email, password }`. Returns a JWT + user. |
-| GET    | `/auth/me`           | Yes | Get the current logged-in user. |
-| POST   | `/meetings`          | Yes | Upload an audio file (`multipart/form-data`, field: `audio`). Transcribes, summarizes, and saves the meeting. |
-| GET    | `/meetings`          | Yes | List the current user's meetings (summary fields only). |
-| GET    | `/meetings/:id`      | Yes | Get full details for one of the current user's meetings. |
-| DELETE | `/meetings/:id`      | Yes | Delete one of the current user's meetings and its audio file. |
-| GET    | `/health`            | No | Health check. |
-
-Authenticated requests must include `Authorization: Bearer <token>`. The frontend handles this automatically once you're logged in.
-
-**Response shape (success):**
-```json
-{ "success": true, "message": "Meeting processed successfully", "data": { /* meeting object */ } }
-```
-
-**Response shape (error):**
-```json
-{ "success": false, "message": "Unable to process meeting" }
-```
-
 ## AI Approach
 
 - **ASR:** Audio is streamed to OpenAI's Whisper API (`whisper-1`) and the plain-text transcript is stored on the meeting record.
@@ -145,10 +57,11 @@ Authenticated requests must include `Authorization: Bearer <token>`. The fronten
 
 _Add screenshots here after running the app locally, e.g.:_
 
-- `docs/screenshot-dashboard.png`
-- `docs/screenshot-upload.png`
-- `docs/screenshot-meeting-details.png`
+- <img width="1906" height="832" alt="image" src="https://github.com/user-attachments/assets/6bc05ca5-03c9-48b9-8e52-9854aeed2ee4" />
+- <img width="1862" height="857" alt="image" src="https://github.com/user-attachments/assets/83e470e0-a34e-46ab-8670-0e5f80fca67a" />
+- <img width="1886" height="857" alt="image" src="https://github.com/user-attachments/assets/350677d2-8403-4b6a-afd6-2f9cf8619fab" />
+
 
 ## Demo
 
-_Add a link to your demo video here._
+_[Add a link to your demo video here](https://drive.google.com/file/d/1riv4hriziYDwEr1LSu8fhoUB7IH1NO--/view)._
